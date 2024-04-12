@@ -106,13 +106,13 @@ void displayRecordsInHash(struct HashType *hashTable, int tableSize)
 {
     for(int i = 0; i < tableSize; i++)
     {
-        // Assigning a pointer to the linked list in the hashTable
+        // Assigning a pointer to the linked list on the hashTable
         struct RecordType *current = hashTable[i].pointer;
 
-        // Check if there are records at this index
+        // Check if index is occupied
         if (current != NULL)
         {
-            // Print the index only if there are records
+            // Print only if it is occupied
             printf("Index %d ->", i);
 
             // Loop through the linked list and print all records
@@ -145,19 +145,24 @@ int main(void)
 
     // Initialize the hash table
     struct HashType *hashTable = NULL;
+
     // create a variable hashTableSize and assign it a value
     int hashtableSize = 23;
-    // initialize a hashTable, use calloc (so everything is assigned to NULL)
+
+    // initialize a hashTable and alloc mem.
     hashTable = (struct HashType*)calloc(sizeof(struct HashType), hashtableSize);
-    // for each record in pRecords, insert it into the hash table using the insertRecord function
+
+    // insert function
     int n = recordSz;
     for (int i = 0; i<n; i++)
     {
         insertRecord(hashTable, &pRecords[i], hashtableSize);
 
     }
+
     // call the display records function
     displayRecordsInHash(hashTable, hashtableSize);
+    
     // free all the allocated memory
     free(pRecords);
     free(hashTable);
