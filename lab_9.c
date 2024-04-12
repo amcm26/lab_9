@@ -9,8 +9,9 @@ struct RecordType
     int id;
     char name;
     int order;
+
     // create a next pointer (for linkedlist structure)
-	struct RecordType *next;
+    struct RecordType *next;
 };
 
 // Fill out this structure
